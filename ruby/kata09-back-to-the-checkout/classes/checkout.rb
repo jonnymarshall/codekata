@@ -37,7 +37,14 @@ class CheckOut
   end
 
   def calculate_discounts(item, quantity)
-    @discounts += item.deals.discount * (quantity / item.deals.quantity) if quantity >= item.deals.quantity
-  end
+    deals_descending_quantity = item.deals.sort_by { |deal| deal.quantity }.reverse
 
+    deals_descending_quantity.each do | deal |
+      if quantity >= deal.quantity
+        @discounts += deal.discount * (quantity / deal.quantity) if quantity >= deal.quantity
+        quantity -= deal.quantity
+      end
+    end
+
+  end
 end

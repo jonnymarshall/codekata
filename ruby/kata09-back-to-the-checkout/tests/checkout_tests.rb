@@ -39,10 +39,18 @@ class TestPrice < Test::Unit::TestCase
     co.scan("B");  assert_equal(175, co.total)
   end
 
+  def test_multiple_discounts
+    assert_equal(  20, price("EEEEE"))
+    assert_equal(  35, price("EEEEEEEEEE"))
+    assert_equal(  55, price("EEEEEEEEEEEEEEE"))
+  end
+
   RULES = {
-    "A" => Item.new(id: "A", price: 50, deals: Deal.new(quantity: 3, discount: 20)),
-    "B" => Item.new(id: "B", price: 30, deals: Deal.new(quantity: 2, discount: 15)),
+    "A" => Item.new(id: "A", price: 50, deals: [Deal.new(quantity: 3, discount: 20)]),
+    "B" => Item.new(id: "B", price: 30, deals: [Deal.new(quantity: 2, discount: 15)]),
     "C" => Item.new(id: "C", price: 20),
-    "D" => Item.new(id: "D", price: 15)
+    "D" => Item.new(id: "D", price: 15),
+    ## multiple discount rule
+    "E" => Item.new(id: "E", price: 5, deals: [Deal.new(quantity: 5, discount: 5), Deal.new(quantity: 10, discount: 15)]),
   }
 end
