@@ -1,4 +1,6 @@
 require_relative "checkout"
+require_relative "item"
+require_relative "deal"
 require "test/unit"
  
 class TestPrice < Test::Unit::TestCase
@@ -38,25 +40,9 @@ class TestPrice < Test::Unit::TestCase
   end
 
   RULES = {
-    "A" => {
-      id: "A",
-      price: 50,
-      deal: 3,
-      discount: 20
-    },
-    "B" => { 
-      id: "B",
-      price: 30,
-      deal: 2,
-      discount: 15
-    },
-    "C" => {
-      id: "C",
-      price: 20,
-    },
-    "D" => {
-      id: "D",
-      price: 15
-    }
+    "A" => Item.new(id: "A", price: 50, deals: Deal.new(quantity: 3, discount: 20)),
+    "B" => Item.new(id: "B", price: 30, deals: Deal.new(quantity: 2, discount: 15)),
+    "C" => Item.new(id: "C", price: 20),
+    "D" => Item.new(id: "D", price: 15)
   }
 end
