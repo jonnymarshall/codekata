@@ -1,6 +1,6 @@
-require_relative "checkout"
-require_relative "item"
-require_relative "deal"
+require_relative "../classes/checkout"
+require_relative "../classes/item"
+require_relative "../classes/deal"
 require "test/unit"
  
 class TestPrice < Test::Unit::TestCase
