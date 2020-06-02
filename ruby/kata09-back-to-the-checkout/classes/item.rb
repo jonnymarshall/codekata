@@ -1,7 +1,4 @@
-require "byebug"
-
 class Item
-
   attr_reader :id, :price, :deals
 
   def initialize(id:, price:, deals: nil)
@@ -13,5 +10,4 @@ class Item
   def has_deals?
     !@deals.nil?
   end
-
 end
