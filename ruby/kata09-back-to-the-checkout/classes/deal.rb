@@ -2,7 +2,7 @@ require "byebug"
 
 class Deal
 
-  attr_accessor :quantity, :discount
+  attr_reader :quantity, :discount
   
   def initialize(quantity:, discount:)
     @quantity = quantity

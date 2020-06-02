@@ -2,7 +2,7 @@ require "byebug"
 
 class Item
 
-  attr_accessor :id, :price, :deals
+  attr_reader :id, :price, :deals
 
   def initialize(id:, price:, deals: nil)
     @id = id
